@@ -5,7 +5,6 @@ use std::thread;
 use std::time::Instant;
 
 fn main() {
-    println!("Memulai Versi 2-Thread...");
     let start_time = Instant::now(); // hitung waktu
     let (tx, rx) = mpsc::channel();
     let reader_thread = thread::spawn(move || {

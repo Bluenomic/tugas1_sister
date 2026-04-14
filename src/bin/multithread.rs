@@ -5,7 +5,6 @@ use std::thread;
 use std::time::Instant;
 
 fn main() {
-    println!("Memulai Versi Multi-Reader...");
     let start_time = Instant::now(); // hitung waktu
     let (tx, rx) = mpsc::channel();
     let file = File::open("Product-Sales-Region.csv").expect("Gagal membuka file");
@@ -14,7 +13,7 @@ fn main() {
     // MuTex
     let shared_lines = Arc::new(Mutex::new(lines));
     let mut handles = vec![];
-    let jumlah_thread_pembaca = 4; // Anda bisa mengubah angka ini
+    let jumlah_thread_pembaca = 4; // jumlah thread bisa diubah
 
     for _ in 0..jumlah_thread_pembaca {
         let tx_clone = tx.clone();
